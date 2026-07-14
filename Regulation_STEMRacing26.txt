@@ -1,0 +1,2661 @@
+ STEM RACING INDIA NATIONAL FINALS 2024-25 - TECHNICAL REGULATIONS
+ Complete Engineering Specification Extraction
+
+---
+
+ PART 1: DEFINITIONS
+
+---
+
+ DEFINITION: STEM Racing™ India Car
+ID: DEF-T1.1
+Name: STEM Racing™ India Car Definition
+Description: A car designed and manufactured according to these regulations for participation in races on the STEM Racing™ India track at the National Finals event, powered only by a single 8-gram power unit cartridge. STEM Racing™ India cars are designed to travel the 20-metre race and withstand the physical deceleration required after crossing the finishing line.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Verification that assembly consists only of listed components
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Component count verification, material identification, assembly structure validation
+Required Inputs: Full car assembly mesh, component classification data
+Expected Output: Pass/Fail
+Visual Highlight: Highlight any unauthorized components
+Engineering Importance: Critical
+Notes: Assembly must only consist of: Body, Power Unit Cartridge Chamber, Wheels (x4), Wheel Support Systems (x4), Tether Line Guides (x2), Nose Cone, Front Wing(s), Front Wing Support Structure, Front Wing End Plates, Rear Wing(s), Rear Wing Support Structure, Surface Finishes and Decals, STEM Racing™ India Logo Decal, Halo, Helmet. Adhesives with no dimensional impact are permissible for joining components.
+
+---
+
+ DEFINITION: Fully Assembled Car
+ID: DEF-T1.2
+Name: Fully Assembled Car Definition
+Description: A STEM Racing™ India car, without a power unit cartridge inserted, presented ready for racing, resting on all four wheels on the track surface, free of any external force other than gravity.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: All wheels contacting track surface, no external forces
+Can be checked automatically: YES
+Automatic Checking Method: Verify all wheels contact ground plane, no external forces applied
+Required Inputs: Car mesh, ground plane
+Expected Output: Pass/Fail
+Visual Highlight: Highlight any wheel not contacting ground
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Body
+ID: DEF-T1.3
+Name: Body Definition
+Description: The body is a single uninterrupted piece of STEM Racing™ Model Block material existing rear of reference plane A and encompassing both the virtual cargo and power unit cartridge chamber. For dimensional purposes the body also includes any attached decals and surface finishes. Any STEM Racing™ Model Block forward of reference plane A is not defined as body.
+Category: Body
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify material region rear of reference plane A, verify single continuous piece
+Can be checked automatically: YES
+Automatic Checking Method: Material identification, plane intersection, connectivity analysis
+Required Inputs: Car mesh, material properties, reference plane A location
+Expected Output: Pass/Fail
+Visual Highlight: Color-code body region, highlight discontinuities
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Power Unit Cartridge Chamber
+ID: DEF-T1.4
+Name: Power Unit Cartridge Chamber Definition
+Description: A cylindrical clear space bounded around its inner circumference and forward end by car body only. This is where the power unit cartridge is placed for racing.
+Category: CO₂ System
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Cylindrical cavity identification, material boundaries
+Can be checked automatically: YES
+Automatic Checking Method: Mesh cavity detection, cylindrical feature recognition
+Required Inputs: Car mesh
+Expected Output: Pass/Fail
+Visual Highlight: Highlight chamber boundaries
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Wing
+ID: DEF-T1.5
+Name: Wing Definition
+Description: An aerodynamic feature that permits airflow around its minimum required chord surface including its features of a leading and trailing edge across its minimum required span width. Dimensionally defined by span, chord and thickness. Vertical cross-sectional shape parallel to direction of travel is referred to as an aerofoil.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify leading edge, trailing edge, span, chord, thickness features
+Can be checked automatically: YES
+Automatic Checking Method: Feature recognition, edge detection, profile analysis
+Required Inputs: Wing mesh, reference planes
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wing surfaces, label span, chord, thickness
+Engineering Importance: High
+
+---
+
+ DEFINITION: Wing Support Structure
+ID: DEF-T1.6
+Name: Wing Support Structure Definition
+Description: 
+T1.6.1 Front Wing Support Structure: Feature forward of reference plane A that joins wing(s) to the nose cone.
+T1.6.2 Rear Wing Support Structure: Feature rearward of reference plane B that joins wing to car body.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify connection features relative to reference planes
+Can be checked automatically: YES
+Automatic Checking Method: Connection analysis, position relative to reference planes
+Required Inputs: Wing mesh, support structure mesh, reference planes
+Expected Output: Pass/Fail
+Visual Highlight: Highlight support structures
+Engineering Importance: High
+
+---
+
+ DEFINITION: End Plate
+ID: DEF-T1.6.3
+Name: End Plate Definition
+Description: Any structure that forms part of a wing assembly outside of the minimum wing span.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify structures outside wing span boundaries
+Can be checked automatically: YES
+Automatic Checking Method: Span measurement, identify protruding structures
+Required Inputs: Wing mesh
+Expected Output: Pass/Fail
+Visual Highlight: Highlight end plates
+Engineering Importance: Medium
+
+---
+
+ DEFINITION: Nose Cone
+ID: DEF-T1.7
+Name: Nose Cone Definition
+Description: Component of the car, used as a wing support structure, that only exists forward of reference plane A. Includes any STEM Racing™ Model Block material or any other materials that continue forward of reference plane A.
+Category: Body
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify all material forward of reference plane A
+Can be checked automatically: YES
+Automatic Checking Method: Plane intersection, material identification
+Required Inputs: Car mesh, reference plane A
+Expected Output: Pass/Fail
+Visual Highlight: Highlight nose cone region
+Engineering Importance: High
+
+---
+
+ DEFINITION: Wheel
+ID: DEF-T1.8
+Name: Wheel Definition
+Description: A single part or assembly of components, cylindrical in form, with its maximum circumference contacting the track surface, allowing forward motion of the car through rotation.
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Cylindrical feature recognition, ground contact identification
+Can be checked automatically: YES
+Automatic Checking Method: Cylindrical feature detection, contact analysis
+Required Inputs: Wheel mesh, ground plane
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wheels
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Wheel Support System
+ID: DEF-T1.9
+Name: Wheel Support System Definition
+Description: Single part or assembly of components that connect a wheel to any other part of the car. MUST be contained within a theoretical cylindrical extrusion defined by the actual diameter of the relative wheels across each axle. May be sourced from a supplier or manufactured wholly or in part by the team.
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Connection between wheel and car, containment within wheel diameter extrusion
+Can be checked automatically: YES
+Automatic Checking Method: Connection analysis, containment within theoretical cylinder
+Required Inputs: Wheel support mesh, wheel mesh, axle definition
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wheel support structures
+Engineering Importance: High
+
+---
+
+ DEFINITION: Tether Line Guide
+ID: DEF-T1.10
+Name: Tether Line Guide Definition
+Description: A key safety component which completely surrounds the track tether line so as to safely connect the car to the tether line during races. Can be sourced from a supplier or manufactured wholly or in part by the team.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Closed loop around tether line path
+Can be checked automatically: YES
+Automatic Checking Method: Identify enclosed hole features
+Required Inputs: Tether guide mesh
+Expected Output: Pass/Fail
+Visual Highlight: Highlight tether guides
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Surface Finish and Decals
+ID: DEF-T1.11
+Name: Surface Finish and Decals Definition
+Description: Surface finish is any applied visible surface covering of uniform thickness over the profile of a STEM Racing™ India car assembly component. Decal is material adhered to a component or surface finish. 100% of area of adhering side must be attached to a surface. Surface finishes and decals are included when measuring dimensions of any components they feature on.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify applied layers, verify 100% adhesion
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Surface layer detection, attachment verification
+Required Inputs: Component mesh, surface finish mesh, decal mesh
+Expected Output: Pass/Fail
+Visual Highlight: Highlight decals and finishes
+Engineering Importance: Medium
+Notes: Decal thickness maximum 0.5mm (T4.8)
+
+---
+
+ DEFINITION: STEM Racing™ India Logo Decal
+ID: DEF-T1.12
+Name: STEM Racing™ India Logo Decal Definition
+Description: Labelled decal for Car A and Car B, blank decal for display car(s). Official decals supplied by STEM Racing India. Consists of STEM Racing™ India logo graphic printed on black or white adhesive vinyl with 1mm contrast keyline border. Horizontal dimension: 30mm. Vertical dimension: 15mm.
+Category: General
+Requirement Type: Range
+Numerical Values:
+- Horizontal: 30.0mm
+- Vertical: 15.0mm
+- Keyline border: 1.0mm
+Geometry Needed: Decal dimensions, border identification
+Can be checked automatically: YES
+Automatic Checking Method: Decal dimension measurement, border detection
+Required Inputs: Decal mesh, car model
+Expected Output: Pass/Fail
+Visual Highlight: Highlight decal, show dimensions
+Engineering Importance: Medium
+
+---
+
+ DEFINITION: Hand Finishing
+ID: DEF-T1.13
+Name: Hand Finishing Definition
+Description: Use of a hand powered device (e.g., abrasive paper) for removing only irregularities that may remain on a CNC machined surface of the car body. These irregularities are often referred to as 'machined marks'. Any hand finishing must be kept to a minimum.
+Category: Manufacturing
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: Surface roughness analysis
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Surface quality analysis, roughness measurement
+Required Inputs: Car mesh, surface quality data
+Expected Output: Pass/Warning/Fail
+Visual Highlight: Highlight areas of significant hand finishing
+Engineering Importance: Low
+
+---
+
+ DEFINITION: Official STEM Racing™ Model Block
+ID: DEF-T1.14
+Name: Official STEM Racing™ Model Block Definition
+Description: Rigid, closed cell foam block processed to dimensional features as shown by diagrams in appendix of this document. All cars entered into STEM Racing™ India National Finals 2025 must be manufactured from STEM RACING™ Model Blocks.
+Category: Materials
+Requirement Type: Boolean
+Numerical Values: See Appendix II for dimensions
+Geometry Needed: Material identification, dimensional verification
+Can be checked automatically: YES
+Automatic Checking Method: Material identification, block dimensions verification
+Required Inputs: Car mesh, material properties
+Expected Output: Pass/Fail
+Visual Highlight: Highlight block origin
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Engineering Drawings
+ID: DEF-T1.15
+Name: Engineering Drawings Definition
+Description: CAD produced drawings detailed such that, along with relevant CAM programs, could theoretically be used to manufacture the fully assembled car by a third party. MUST include all relevant dimensions and material information. Where stated, engineering drawings of readable scale MUST be clearly dimensioned and identified by hatching, shading, block color or boundary line to specifically identify and prove compliance for virtual cargo, front and rear wheel support structures, nose, front and rear wing support structures and front and rear wing surfaces.
+Category: Documentation
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Drawing completeness, dimension verification
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Drawing analysis, dimension extraction
+Required Inputs: Engineering drawings (CAD or PDF)
+Expected Output: Pass/Warning/Fail
+Visual Highlight: Highlight missing dimensions or unlabeled features
+Engineering Importance: High
+
+---
+
+ DEFINITION: Renderings
+ID: DEF-T1.16
+Name: Renderings Definition
+Description: Images intended to illustrate the three-dimensional form of an object. Can be generated in isometric projection, oblique projection, or perspective.
+Category: Documentation
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: 3D representation verification
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Image analysis, 3D model comparison
+Required Inputs: Renderings, 3D model
+Expected Output: Pass/Warning/Fail
+Visual Highlight: Highlight inconsistencies
+Engineering Importance: Low
+
+---
+
+ DEFINITION: Vertical Reference Plane
+ID: DEF-T1.17.1
+Name: Vertical Reference Plane Definition
+Description: A two-dimensional invisible plane exists along the length of the power unit cartridge chamber center axis and normal to the track surface.
+Category: Geometry
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Plane definition relative to cartridge chamber axis
+Can be checked automatically: YES
+Automatic Checking Method: Determine plane from chamber axis and normal to track surface
+Required Inputs: Cartridge chamber geometry, track surface
+Expected Output: Reference plane established
+Visual Highlight: Show vertical reference plane
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Reference Plane A
+ID: DEF-T1.17.2
+Name: Reference Plane A Definition
+Description: A two-dimensional invisible plane exists 16.0mm in front of the front axle center line normal to the track surface.
+Category: Geometry
+Requirement Type: Exact
+Numerical Values:
+- Distance from front axle center line: 16.0mm
+Geometry Needed: Determine front axle center line, construct plane 16mm forward, normal to track surface
+Can be checked automatically: YES
+Automatic Checking Method: Identify front axle center line, offset plane normal to track surface
+Required Inputs: Front axle geometry, track surface
+Expected Output: Reference plane established
+Visual Highlight: Show reference plane A
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Reference Plane B
+ID: DEF-T1.17.3
+Name: Reference Plane B Definition
+Description: A two-dimensional invisible plane exists 16.0mm to the rear of the rear axle center line normal to the track surface.
+Category: Geometry
+Requirement Type: Exact
+Numerical Values:
+- Distance from rear axle center line: 16.0mm
+Geometry Needed: Determine rear axle center line, construct plane 16mm rearward, normal to track surface
+Can be checked automatically: YES
+Automatic Checking Method: Identify rear axle center line, offset plane normal to track surface
+Required Inputs: Rear axle geometry, track surface
+Expected Output: Reference plane established
+Visual Highlight: Show reference plane B
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Additional Components
+ID: DEF-T1.18
+Name: Additional Components Definition
+Description: Any component other than those listed in T1.1 will be considered an additional component.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Identify components not in allowed list
+Can be checked automatically: YES
+Automatic Checking Method: Component classification, allowed list comparison
+Required Inputs: Car assembly, component list
+Expected Output: Pass/Fail
+Visual Highlight: Highlight unauthorized components
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Normal
+ID: DEF-T1.19
+Name: Normal Definition (Geometric)
+Description: Being at right angles; perpendicular. Perpendicular to the direction of a tangent line of a curve or a tangent plane to a surface.
+Category: Geometry
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Perpendicular relationships
+Can be checked automatically: YES
+Automatic Checking Method: Angle measurement (90°)
+Required Inputs: Lines, surfaces, planes
+Expected Output: True/False
+Visual Highlight: Show angle measurement
+Engineering Importance: Medium
+
+---
+
+ DEFINITION: Full 8-Gram Power Unit Cartridge
+ID: DEF-T1.20
+Name: Full 8-Gram Power Unit Cartridge Definition
+Description: A metallic cartridge which contains an 8-gram charge of compressed air. For weights and dimensions refer to appendix vi. Official Denford Race Power Pack dimensions.
+Category: CO₂ System
+Requirement Type: Exact/Range
+Numerical Values:
+- Weight range: 28.9g to 29.4g
+Geometry Needed: Standard cartridge dimensions from appendix
+Can be checked automatically: YES
+Automatic Checking Method: Weight measurement, dimensional verification
+Required Inputs: Cartridge geometry, weight scale data
+Expected Output: Pass/Fail
+Visual Highlight: Show cartridge dimensions
+Engineering Importance: Critical
+
+---
+
+ DEFINITION: Halo
+ID: DEF-T1.21
+Name: Halo Definition
+Description: Driver crash-protection system consisting of a curved bar placed to protect the driver's head. Introduced to echo real Formula 1 car design and as component of new car deceleration system. Universal 3D part available for download. MUST be included in final car design. Detailed Engineering Drawings available in appendix ix.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values: See appendix ix
+Geometry Needed: Halo geometry verification, pocket/recess identification
+Can be checked automatically: YES
+Automatic Checking Method: Compare downloaded Halo geometry to car model, verify pocket geometry
+Required Inputs: Halo mesh, car body mesh
+Expected Output: Pass/Fail
+Visual Highlight: Highlight Halo, show pocket
+Engineering Importance: Critical
+Notes: Requires recess/pocket to match underside of Halo in car body, designed for 1/4" (6.35mm) ball nose cutter.
+
+---
+
+ DEFINITION: Legal Ballast
+ID: DEF-T1.22
+Name: Legal Ballast Definition
+Description: Ballast added only to the container under the halo, accessible through the halo/helmet aperture. This is the only permitted location for ballast. Can consist of materials such as fishing lead weights or similar.
+Category: Weight
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Ballast container location, access verification
+Can be checked automatically: YES
+Automatic Checking Method: Container identification, location verification
+Required Inputs: Car model, ballast container geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight legal ballast container
+Engineering Importance: Medium
+Notes: Virtual Cargo can coincide with legal ballast container but not halo pocket. Helmet should not be glued in place to allow ballast adjustments.
+
+---
+
+ PART 2: GENERAL PRINCIPLES
+
+---
+
+ REGULATION: T2.1 - Regulations Documents
+ID: REG-T2.1
+Rule Name: Regulations Documents
+Description: STEM Racing India issues the regulations, revisions and amendments. Technical Regulations (this document) concerned with car design and manufacture. Competition Regulations concerned with judging and competition event.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Administrative only
+
+---
+
+ REGULATION: T2.2 - Interpretation of Regulations
+ID: REG-T2.2
+Rule Name: Interpretation of Regulations
+Description: Text of regulation and definitions considered together for interpretation. Diagrams/images for illustration only and do not contribute to regulatory compliance. Text clarification questions answered by STEM Racing India and published to all teams.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Important: Diagrams/images for illustration only
+
+---
+
+ REGULATION: T2.3 - Amendments
+ID: REG-T2.3
+Rule Name: Amendments to Regulations
+Description: Any amendments announced and released by STEM Racing India by email notification. Amended text indicated with red underlined text.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Administrative only
+
+---
+
+ REGULATION: T2.4 - Classification of Regulations
+ID: REG-T2.4
+Rule Name: Classification of Regulations
+Description: Technical regulations classified as GENERAL, SAFETY, or PERFORMANCE. GENERAL: shape car fundamentally looks and works. SAFETY: mandatory rules governing safe running. PERFORMANCE: direct impact on performance, carry heaviest penalties.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: High
+Notes: Performance regulations highlighted in yellow throughout document. Non-compliance with Performance regulations makes car INELIGIBLE for 'Fastest Car' and 'Best Engineered Car' awards.
+
+---
+
+ REGULATION: T2.5 - Compliance with Regulations
+ID: REG-T2.5
+Rule Name: Compliance with Regulations
+Description: Points deducted for non-compliance with technical regulations per penalties defined. Both race cars assessed during Specification Judging, penalties applied once per infringement per car. Teams with safety infringements given 10-minute service session after initial Specification Judging.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: Critical
+Notes: Proportional penalties applied to specific regulations listed in T2.5.2. Penalty increases proportionally as non-compliance margin increases, rounded up to next complete unit (1.0mm or 1.0g).
+
+---
+
+ REGULATION: T2.6 - Design Ideas and Compliance Questions
+ID: REG-T2.6
+Rule Name: Design Ideas and Regulation Compliance Questions
+Description: Teams not permitted to seek ruling from STEM Racing India or officials before event. Regulatory communication between teams and teachers only for guidance. Rulings only made by official judges at National Finals event. Innovation encouraged; teams may push boundaries for competitive edge.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Administrative only
+
+---
+
+ REGULATION: T2.7 - Measurements
+ID: REG-T2.7
+Rule Name: Measurements
+Description: All dimensions and weights presented as absolute minimum or maximum unless stated otherwise. Dimensional measures inclusive of paint finish or decal. Specially manufactured gauges for broad verification, accurate tools for close inspection. Weight measurements using calibrated electronic competition scales.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: All dimensions inclusive of finishes
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: Critical
+Notes: Some regulations assessed with full 8g race cartridge fully inserted. Static weight distribution must allow car to rest on all four wheels without assistance. Important regulations for Main Car Body: maximum overall length 205.0mm, minimum thickness 3.5mm at every point.
+
+---
+
+ REGULATION: T2.8 - Benefit of Doubt
+ID: REG-T2.8
+Rule Name: Benefit of Doubt
+Description: Chair of judges will seek to use benefit of doubt when assessment of compliance is marginal or unclear. Teams given benefit of doubt rather than firm penalty if penalty cannot be clearly measured or identified.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Administrative only
+
+---
+
+ REGULATION: T2.9 - Spirit of the Competition
+ID: REG-T2.9
+Rule Name: Spirit of the Competition
+Description: Teams expected to act in spirit of competition. Team or individual deemed outside spirit can be removed from certain or all aspects. Examples: attempting to abuse technical regulations, unsportsmanlike conduct.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Administrative only
+
+---
+
+ REGULATION: T2.10 - Originality of Work
+ID: REG-T2.10
+Rule Name: Originality of Work
+Description: STEM Racing India welcomes innovation and does not consider plagiarism acceptable. Various originality detection methodologies implemented. Competing teams required to submit originality declaration.
+Category: General
+Requirement Type: Conditional
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: N/A
+Notes: Administrative only
+
+---
+
+ PART 3: FULLY ASSEMBLED CAR (ARTICLE T3)
+
+---
+
+ REGULATION: T3.1.1 - Design and Manufacture (CAD)
+ID: REG-T3.1.1
+Rule Name: CAD Design Requirement
+Description: All STEM Racing™ India cars must be designed and engineered using CAD (Computer Aided Design) and CAM (Computer Aided Manufacture) technology. CAD software should provide for 3D part modelling, assembly and 3D realistic rendering.
+Category: Manufacturing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: High
+Penalty: 5pts each
+
+---
+
+ REGULATION: T3.1.2 - Manufacturing Method
+ID: REG-T3.1.2
+Rule Name: CNC Manufacturing Requirement
+Description: Body of all STEM Racing™ India cars must be manufactured via material removal using a CNC router/milling machine. Should occur at school/college or designated manufacturing center/partner site.
+Category: Manufacturing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Manufacturing evidence verification
+Required Inputs: Manufacturing documentation
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: High
+Penalty: 5pts each
+
+---
+
+ REGULATION: T3.1.3 - Holographic Sticker
+ID: REG-T3.1.3
+Rule Name: STEM Racing™ Holographic Sticker
+Description: Official STEM Racing™ holographic sticker from official STEM Racing™ Model Block for each car must be submitted on project element submission sheet at National Finals event registration.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Medium
+Penalty: 5pts each
+
+---
+
+ REGULATION: T3.1.4 - Identical Components
+ID: REG-T3.1.4
+Rule Name: Identical Components for Both Cars
+Description: Individual components of both race cars must be designed with identical geometry.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component-to-component comparison
+Can be checked automatically: YES
+Automatic Checking Method: Geometry comparison between corresponding components
+Required Inputs: Car A components, Car B components
+Expected Output: Pass/Fail
+Visual Highlight: Highlight differences
+Engineering Importance: High
+Penalty: 5pts each
+
+---
+
+ REGULATION: T3.2.1 - Safe Construction (Inspection)
+ID: REG-T3.2.1
+Rule Name: Safe Construction - Specification Judging
+Description: All submitted cars inspected to ensure engineered and constructed safely for racing. If judged unsafe, team required to carry out repairs/modifications. Penalty of 10 points per unsafe car.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Safety feature verification
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Safety feature analysis
+Required Inputs: Full car assembly
+Expected Output: Pass/Fail
+Visual Highlight: Highlight unsafe features
+Engineering Importance: Critical
+Penalty: 10pts each
+
+---
+
+ REGULATION: T3.2.2 - Safety During Racing
+ID: REG-T3.2.2
+Rule Name: Safe Construction - During Racing
+Description: Race officials routinely inspect cars for safety during scheduled races. If ruled unsafe, penalty of 10 points at discretion of Chair of Judges. Team may repair car per Competition Regulations.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Critical
+Penalty: 10pts at discretion
+
+---
+
+ REGULATION: T3.3 - Defined Features
+ID: REG-T3.3
+Rule Name: Defined Features
+Description: Car assembly must only consist of components listed in ARTICLE T1.1.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component identification
+Can be checked automatically: YES
+Automatic Checking Method: Component classification, allowed list validation
+Required Inputs: Full car assembly, component list from T1.1
+Expected Output: Pass/Fail
+Visual Highlight: Highlight unauthorized components
+Engineering Importance: Critical
+Penalty: 20pts
+
+---
+
+ REGULATION: T3.4 - Total Width
+ID: REG-T3.4
+Rule Name: Total Width
+Description: Maximum assembled car width, measured normal to vertical reference plane, between outer edges of widest feature of car assembly.
+Category: Overall Dimensions
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 65.0mm
+- Absolute Max: 85.0mm
+Geometry Needed: Bounding box width normal to vertical reference plane
+Can be checked automatically: YES
+Automatic Checking Method: Bounding box width measurement
+Required Inputs: Car mesh, vertical reference plane
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show width measurement arrows
+Engineering Importance: High
+Penalty: 5pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T3.5 - Total Height
+ID: REG-T3.5
+Rule Name: Total Height
+Description: Maximum assembled car height, normal to vertical reference plane, between track surface and highest feature of car assembly. Measured with full 8g power unit cartridge inserted, car on all four wheels with no outside assistance.
+Category: Overall Dimensions
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 65.0mm
+Geometry Needed: Maximum height from track surface with cartridge inserted
+Can be checked automatically: YES
+Automatic Checking Method: Height measurement from ground plane
+Required Inputs: Car mesh with cartridge, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show height measurement
+Engineering Importance: High
+Penalty: 5pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T3.6 - Total Weight
+ID: REG-T3.6
+Rule Name: Total Weight
+Description: Weight of car excluding power unit cartridge. If underweight at registration and confirmed during initial specification judging, points penalty applied. No car will race underweight. Ballast added to underside at 0.2g for every 0.1g underweight.
+Category: Weight
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 50.0g
+Geometry Needed: Weight measurement
+Can be checked automatically: N/A (requires physical weighing)
+Automatic Checking Method: Weight scale data import
+Required Inputs: Scale weight reading
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show weight value
+Engineering Importance: Critical
+Penalty: 10pts per gram (Proportional)
+Notes: Ballast only in legal container under halo (T1.22). Underweight cars receive ballast at 0.2g per 0.1g underweight.
+
+---
+
+ REGULATION: T3.7 - Track Clearance
+ID: REG-T3.7
+Rule Name: Track Clearance
+Description: Distance between track surface and any car component as listed in T1.1, except wheels. Measured normal to track surface. Measured with full 8g power unit cartridge inserted, car on all four wheels with no outside assistance.
+Category: Clearance
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 1.5mm
+Geometry Needed: Minimum distance from any non-wheel component to track surface
+Can be checked automatically: YES
+Automatic Checking Method: Ray casting from track surface, distance measurement
+Required Inputs: Car mesh (with cartridge), track surface, wheel exclusion
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Highlight minimum clearance point
+Engineering Importance: High
+Penalty: 10pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T3.8 - Status During Racing
+ID: REG-T3.8
+Rule Name: Status During Racing
+Description: Car assembly must be designed so that no items other than those listed in T3.9, or power unit cartridges are removed, replaced or added to assembly during scheduled race events.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component change tracking
+Can be checked automatically: N/A
+Automatic Checking Method: N/A (during racing)
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Medium
+Penalty: 5pts
+
+---
+
+ REGULATION: T3.9 - Replacement Components
+ID: REG-T3.9
+Rule Name: Replacement Components
+Description: Spare/replacement components should be identical in design and geometry to those fitted to car and must be submitted with cars at registration.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component comparison
+Can be checked automatically: YES
+Automatic Checking Method: Geometry comparison between original and replacement components
+Required Inputs: Original components, replacement components
+Expected Output: Pass/Fail
+Visual Highlight: Highlight non-identical components
+Engineering Importance: Medium
+Penalty: N/A
+Notes: Components: Nose cone & front wing assembly (2 max), Rear wing assembly (2 max), Front wheels (4 max), Front wheel support structure (2 max), Rear wheels (4 max), Rear wheel support structure (2 max)
+
+---
+
+ REGULATION: T3.9.1 - Submitted Components
+ID: REG-T3.9.1
+Rule Name: Submitted Replacement Components
+Description: Only submitted replacement components determined by judges to be identical in design and geometry to those fitted to cars will be allowed for track repairs or post-race servicing.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component comparison
+Can be checked automatically: YES
+Automatic Checking Method: Geometry comparison
+Required Inputs: Original components, submitted replacements
+Expected Output: Pass/Fail
+Visual Highlight: Highlight non-identical components
+Engineering Importance: Medium
+Penalty: N/A
+
+---
+
+ REGULATION: T3.9.2 - Introduced Components
+ID: REG-T3.9.2
+Rule Name: Introduced Components
+Description: If any other items need to be introduced for car repairs, a 5pt penalty will be incurred per component item.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component tracking
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Medium
+Penalty: 5pts per component
+
+---
+
+ PART 4: BODY (ARTICLE T4)
+
+---
+
+ REGULATION: T4.1 - Body Construction
+ID: REG-T4.1
+Rule Name: Body Construction
+Description: A single continuous piece of CNC manufactured STEM Racing™ Model Block material must exist rear of reference plane A, encompassing both virtual cargo and power unit cartridge chamber.
+Category: Body
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Single continuous body material identification rear of reference plane A
+Can be checked automatically: YES
+Automatic Checking Method: Material identification, connectivity analysis, plane intersection
+Required Inputs: Car mesh, material properties, reference plane A
+Expected Output: Pass/Fail
+Visual Highlight: Color-code body region, highlight discontinuities
+Engineering Importance: Critical
+Penalty: 20pts
+
+---
+
+ REGULATION: T4.2 - Virtual Cargo
+ID: REG-T4.2
+Rule Name: Virtual Cargo
+Description: Virtual cargo must be completely encompassed by body and wholly positioned between front and rear wheel center lines. Must have minimum dimensions with top surface located symmetrically about and positioned normal (90 degrees) to vertical reference plane. May share common faces with car body. All dimensions absolute minimum.
+Category: Body
+Requirement Type: Minimum
+Numerical Values:
+- Length: 10.0mm
+- Width: 10.0mm
+- Height: 5.0mm
+Geometry Needed: Cargo volume containment, position relative to wheel center lines, symmetry about vertical reference plane
+Can be checked automatically: YES
+Automatic Checking Method: Volume containment check, position verification, symmetry check
+Required Inputs: Body mesh, vertical reference plane, wheel center lines
+Expected Output: Pass/Fail
+Visual Highlight: Highlight virtual cargo volume
+Engineering Importance: High
+Penalty: 25pts
+Notes: Virtual Cargo can coincide with legal ballast container but not halo pocket.
+
+---
+
+ REGULATION: T4.3 - Virtual Cargo Identification
+ID: REG-T4.3
+Rule Name: Virtual Cargo Identification
+Description: Virtual cargo location and compliance must be clearly dimensioned (from front or rear axle center lines and height above track). MUST be identified by hatching, shading or block color, or outlined with contrasting color line within engineering drawings.
+Category: Documentation
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Drawing annotations
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Drawing analysis for annotations
+Required Inputs: Engineering drawings
+Expected Output: Pass/Fail
+Visual Highlight: Highlight missing annotations
+Engineering Importance: High
+Penalty: 5pts
+
+---
+
+ REGULATION: T4.4.1 - Halo Inclusion
+ID: REG-T4.4.1
+Rule Name: Halo Inclusion
+Description: Halo MUST be included in car design without any dimensional or surface profile changes. File available for download.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values: See appendix ix
+Geometry Needed: Halo geometry verification
+Can be checked automatically: YES
+Automatic Checking Method: Compare downloaded Halo geometry to installed Halo
+Required Inputs: Halo file, car assembly
+Expected Output: Pass/Fail
+Visual Highlight: Highlight Halo
+Engineering Importance: Critical
+Penalty: 10pts
+
+---
+
+ REGULATION: T4.4.2 - Halo Visibility Front and Side
+ID: REG-T4.4.2
+Rule Name: Halo Visibility - Front and Side Views
+Description: Visibility of Halo must not be physically obstructed by any other component when viewed in front or side views. Everything inside red outline must be visible.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Halo visibility in front and side projections
+Can be checked automatically: YES
+Automatic Checking Method: Ray casting, visibility analysis
+Required Inputs: Car mesh, halo geometry, view directions
+Expected Output: Pass/Fail
+Visual Highlight: Highlight obstruction areas
+Engineering Importance: High
+Penalty: 10pts
+
+---
+
+ REGULATION: T4.4.3 - Halo Visibility Top View
+ID: REG-T4.4.3
+Rule Name: Halo Visibility - Top View
+Description: Halo must not be physically obstructed in plan view except by helmet.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Halo visibility in top projection
+Can be checked automatically: YES
+Automatic Checking Method: Top projection analysis, obstruction detection
+Required Inputs: Car mesh, halo geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight obstruction areas
+Engineering Importance: High
+Penalty: 10pts
+
+---
+
+ REGULATION: T4.4.4 - Halo Circular Notch Height
+ID: REG-T4.4.4
+Rule Name: Halo Circular Notch Height
+Description: Center of Circular Notch must be 34.0mm (±1.0mm) above track surface. Bottom of halo pocket must be 24.0mm and parallel to track surface in assembled car.
+Category: Safety
+Requirement Type: Range
+Numerical Values:
+- Circular Notch center height: 34.0mm ±1.0mm
+- Halo pocket bottom height: 24.0mm
+Geometry Needed: Halo notch center height, pocket bottom height and parallelism
+Can be checked automatically: YES
+Automatic Checking Method: Height measurement, parallelism check
+Required Inputs: Car mesh (with cartridge), track surface, halo geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show height measurements
+Engineering Importance: Critical
+Penalty: 5pts
+
+---
+
+ REGULATION: T4.4.5 - Halo Safety Test
+ID: REG-T4.4.5
+Rule Name: Halo Safety Test
+Description: With car supported on a power unit cartridge, a 1kg load will be suspended to give loading of 2kg at point of contact on Halo circular notch.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values:
+- Suspended load: 1kg
+- Resulting loading: 2kg
+Geometry Needed: Halo structural integrity
+Can be checked automatically: NO
+Automatic Checking Method: Physical test only
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Critical
+Penalty: 5pts
+
+---
+
+ REGULATION: T4.5 - Helmet
+ID: REG-T4.5
+Rule Name: Helmet
+Description: Helmet is a standard part designed by STEM Racing™ that MUST be included in car design without any dimensional changes. Available for download. May be manufactured out of any material.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Helmet geometry verification
+Can be checked automatically: YES
+Automatic Checking Method: Compare downloaded helmet geometry to installed helmet
+Required Inputs: Helmet file, car assembly
+Expected Output: Pass/Fail
+Visual Highlight: Highlight helmet
+Engineering Importance: High
+Penalty: 5pts
+
+---
+
+ REGULATION: T4.6 - STEM Racing™ Logo Decal Location
+ID: REG-T4.6
+Rule Name: STEM Racing™ Logo Decal Location
+Description: STEM Racing™ India logo decal must be wholly adhered to each side of car, and be 100% visible in respective side view.
+Category: General
+Requirement Type: Boolean
+Numerical Values: Decal dimensions: 30mm x 15mm
+Geometry Needed: Decal location and visibility
+Can be checked automatically: YES
+Automatic Checking Method: Decal detection, side view visibility analysis
+Required Inputs: Car mesh, decal geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight decals
+Engineering Importance: Medium
+Penalty: 5pts
+
+---
+
+ REGULATION: T4.7 - Team Number
+ID: REG-T4.7
+Rule Name: Team Number
+Description: Official team number issued after registration. Must be displayed on car body between front edge of halo and reference plane A. Clearly visible in plan view. Minimum text height: 8mm.
+Category: General
+Requirement Type: Minimum
+Numerical Values:
+- Minimum text height: 8.0mm
+Geometry Needed: Text height verification, position verification
+Can be checked automatically: YES
+Automatic Checking Method: Text detection, height measurement, position verification
+Required Inputs: Car mesh, text geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight team number
+Engineering Importance: Low
+Penalty: 2pts
+
+---
+
+ REGULATION: T4.8 - Decal Thickness
+ID: REG-T4.8
+Rule Name: Decal Thickness
+Description: Total thickness of any decal, excluding any surface finishes.
+Category: General
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 0.5mm
+Geometry Needed: Decal layer thickness measurement
+Can be checked automatically: YES
+Automatic Checking Method: Layer thickness measurement
+Required Inputs: Decal geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show thickness measurement
+Engineering Importance: Low
+Penalty: 5pts
+
+---
+
+ PART 5: POWER UNIT CARTRIDGE CHAMBER (ARTICLE T5)
+
+---
+
+ REGULATION: T5.1 - Chamber Diameter
+ID: REG-T5.1
+Rule Name: Power Unit Cartridge Chamber Diameter
+Description: Diameter of power unit cartridge chamber, measured at any point through its minimum depth.
+Category: CO₂ System
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 18.0mm
+- Absolute Max: 18.5mm
+Geometry Needed: Chamber diameter measurement
+Can be checked automatically: YES
+Automatic Checking Method: Cylindrical feature diameter measurement
+Required Inputs: Chamber geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show diameter measurement
+Engineering Importance: Critical
+Penalty: 5pts
+
+---
+
+ REGULATION: T5.2 - Distance from Track Surface
+ID: REG-T5.2
+Rule Name: Distance from Track Surface
+Description: Distance from rear center of power unit cartridge to track surface, measured normal to track surface with full 8g cartridge inserted, car on all four wheels with no outside assistance.
+Category: CO₂ System
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 30.0mm
+- Absolute Max: 40.0mm
+Geometry Needed: Cartridge rear center height from track surface
+Can be checked automatically: YES
+Automatic Checking Method: Height measurement from track surface to cartridge center
+Required Inputs: Cartridge geometry, car mesh (with cartridge), track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show height measurement
+Engineering Importance: High
+Penalty: 5pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T5.3 - Chamber Depth
+ID: REG-T5.3
+Rule Name: Power Unit Cartridge Chamber Depth
+Description: Depth of chamber measured parallel to vertical reference plane anywhere around chamber circumference from opening to chamber end.
+Category: CO₂ System
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 45.0mm
+- Absolute Max: 58.0mm
+Geometry Needed: Chamber depth measurement
+Can be checked automatically: YES
+Automatic Checking Method: Depth measurement from opening to chamber end
+Required Inputs: Chamber geometry, vertical reference plane
+Expected Output: Pass/Fail
+Visual Highlight: Show depth measurement
+Engineering Importance: High
+Penalty: 5pts
+
+---
+
+ REGULATION: T5.4 - Max Angle of Chamber
+ID: REG-T5.4
+Rule Name: Maximum Angle of Chamber
+Description: Absolute maximum angle of chamber, parallel to track surface. Measured with full 8g cartridge inserted, car on all four wheels with no outside assistance.
+Category: CO₂ System
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: -3°
+- Absolute Max: +3°
+Geometry Needed: Chamber angle relative to track surface
+Can be checked automatically: YES
+Automatic Checking Method: Angle measurement between chamber axis and track surface
+Required Inputs: Chamber geometry, car mesh (with cartridge), track surface
+Expected Output: Pass/Fail
+Visual Highlight: Show angle measurement
+Engineering Importance: Safety
+Penalty: 5pts
+
+---
+
+ REGULATION: T5.5 - Chamber Safety Zone
+ID: REG-T5.5
+Rule Name: Chamber Safety Zone
+Description: Safety zone of STEM Racing™ Model Block material with minimum thickness of 3.5mm must be maintained around minimum chamber depth. Entire circumference and depth of power unit cartridge chamber must not be intersected by any object.
+Category: Safety
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 3.5mm
+Geometry Needed: Material thickness around chamber minimum depth
+Can be checked automatically: YES
+Automatic Checking Method: Thickness measurement around chamber, intersection detection
+Required Inputs: Chamber geometry, body mesh
+Expected Output: Pass/Fail
+Visual Highlight: Highlight safety zone
+Engineering Importance: Critical
+Penalty: 10pts
+Notes: Cartridge chamber should be free of any paint.
+
+---
+
+ REGULATION: T5.6 - Power Unit Cartridge Visibility
+ID: REG-T5.6
+Rule Name: Power Unit Cartridge Visibility
+Description: When fully inserted, power unit cartridge must protrude minimum of 5.0mm from rear of car and be visible in its entirety when viewed radially around longitudinal centerline of power unit cartridge.
+Category: CO₂ System
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 5.0mm
+Geometry Needed: Cartridge protrusion measurement, visibility
+Can be checked automatically: YES
+Automatic Checking Method: Protrusion measurement, radial visibility check
+Required Inputs: Cartridge geometry, car mesh (with cartridge), cartridge centerline
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show protrusion measurement
+Engineering Importance: High
+Penalty: 10pts per millimeter (Proportional)
+
+---
+
+ PART 6: TETHER LINE GUIDES (ARTICLE T6)
+
+---
+
+ REGULATION: T6.1 - Tether Line Guide Location
+ID: REG-T6.1
+Rule Name: Tether Line Guide Location
+Description: Each car must have only two firmly secured tether line guides: one on or up to 10.0mm in front of front axle center line, and one on or up to 10.0mm behind rear axle center line. Track tether line must only pass through the two tether line guides during racing.
+Category: Safety
+Requirement Type: Range
+Numerical Values:
+- Maximum forward offset from front axle: 10.0mm
+- Maximum rearward offset from rear axle: 10.0mm
+Geometry Needed: Guide positions relative to axles
+Can be checked automatically: YES
+Automatic Checking Method: Position measurement relative to axle centerlines
+Required Inputs: Tether guide geometry, axle centerlines
+Expected Output: Pass/Fail
+Visual Highlight: Show position measurements
+Engineering Importance: Critical
+Penalty: 10pts
+
+---
+
+ REGULATION: T6.2 - Tether Line Guide Internal Dimension
+ID: REG-T6.2
+Rule Name: Tether Line Guide Internal Dimension
+Description: Minimum and maximum internal measurement of opening within guide which tether line passes through. Measured using 3.5mm and/or 6.0mm diameter tool.
+Category: Safety
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 3.5mm
+- Absolute Max: 6.0mm
+Geometry Needed: Guide hole minimum and maximum diameter
+Can be checked automatically: YES
+Automatic Checking Method: Hole diameter measurement
+Required Inputs: Tether guide geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show hole dimensions
+Engineering Importance: Critical
+Penalty: 5pts
+
+---
+
+ REGULATION: T6.3 - Tether Line Guide Safety
+ID: REG-T6.3
+Rule Name: Tether Line Guide Safety
+Description: Guide holes must be completely closed to prevent tether line from slipping out during racing. Construction closely examined for safety. Guides must be robust to prevent diameter or shape changing during racing. 200g weight suspended from each guide during scrutineering.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values:
+- Test weight: 200g
+Geometry Needed: Closed hole verification, structural robustness
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Hole closure verification
+Required Inputs: Tether guide geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight incomplete closures
+Engineering Importance: Critical
+Penalty: 10pts
+
+---
+
+ PART 7: WHEELS AND WHEEL SUPPORT STRUCTURES (ARTICLE T7)
+
+---
+
+ REGULATION: T7.1 - Number and Location of Wheels
+ID: REG-T7.1
+Rule Name: Number and Location of Wheels
+Description: Car assembly must include four cylindrical wheels: maximum of two at front, maximum of two at rear. Opposing wheels must share common center line/axis.
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wheel count, axle alignment verification
+Can be checked automatically: YES
+Automatic Checking Method: Wheel detection, count verification, axle alignment check
+Required Inputs: Wheel geometry, axle centerlines
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wheels
+Engineering Importance: Critical
+Penalty: 25pts
+
+---
+
+ REGULATION: T7.2.1 - Distance Between Opposing Wheels (Front Axle)
+ID: REG-T7.2.1
+Rule Name: Distance Between Opposing Wheels - Front Axle
+Description: Innermost distance of rotating wheel components (other than rotating axle) between two opposing wheels, measured parallel to track surface.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 38.0mm
+Geometry Needed: Distance between inner surfaces of front wheels
+Can be checked automatically: YES
+Automatic Checking Method: Distance measurement between wheel inner surfaces
+Required Inputs: Front wheel geometry, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show distance measurement
+Engineering Importance: Performance
+Penalty: 2.5pts per millimeter per axle (Proportional)
+
+---
+
+ REGULATION: T7.2.2 - Distance Between Opposing Wheels (Rear Axle)
+ID: REG-T7.2.2
+Rule Name: Distance Between Opposing Wheels - Rear Axle
+Description: Innermost distance of rotating wheel components (other than rotating axle) between two opposing wheels, measured parallel to track surface.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 30.0mm
+Geometry Needed: Distance between inner surfaces of rear wheels
+Can be checked automatically: YES
+Automatic Checking Method: Distance measurement between wheel inner surfaces
+Required Inputs: Rear wheel geometry, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show distance measurement
+Engineering Importance: Performance
+Penalty: 2.5pts per millimeter per axle (Proportional)
+
+---
+
+ REGULATION: T7.3 - Wheelbase
+ID: REG-T7.3
+Rule Name: Wheelbase
+Description: Distance between center line of front and rear wheels as viewed in side view.
+Category: Overall Dimensions
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 120.0mm
+- Absolute Max: 140.0mm
+Geometry Needed: Distance between front and rear axle centerlines
+Can be checked automatically: YES
+Automatic Checking Method: Axle centerline distance measurement
+Required Inputs: Front axle geometry, rear axle geometry
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show wheelbase measurement
+Engineering Importance: Performance
+Penalty: 5pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T7.4.1 - Track Contact Width (Front Wheels)
+ID: REG-T7.4.1
+Rule Name: Track Contact Width - Front Wheels
+Description: Measured along surface of wheel that makes constant contact with track surface, excluding any chambers or fillets.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 13.0mm
+Geometry Needed: Contact width of front wheels
+Can be checked automatically: YES
+Automatic Checking Method: Contact surface width measurement
+Required Inputs: Front wheel geometry, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show contact width measurement
+Engineering Importance: Performance
+Penalty: 2.5pts per millimeter per wheel (Proportional)
+Notes: If only one wheel per axle is outside dimension, point penalty stands but regulation reclassified as General.
+
+---
+
+ REGULATION: T7.4.2 - Track Contact Width (Rear Wheels)
+ID: REG-T7.4.2
+Rule Name: Track Contact Width - Rear Wheels
+Description: Measured along surface of wheel that makes constant contact with track surface, excluding any chambers or fillets.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 17.0mm
+Geometry Needed: Contact width of rear wheels
+Can be checked automatically: YES
+Automatic Checking Method: Contact surface width measurement
+Required Inputs: Rear wheel geometry, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show contact width measurement
+Engineering Importance: Performance
+Penalty: 2.5pts per millimeter per wheel (Proportional)
+Notes: If only one wheel per axle is outside dimension, point penalty stands but regulation reclassified as General.
+
+---
+
+ REGULATION: T7.5 - Wheel Diameter
+ID: REG-T7.5
+Rule Name: Wheel Diameter
+Description: Wheel diameter measured across minimum track contact width rolling surface.
+Category: Wheels
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 28.0mm
+- Absolute Max: 32.0mm
+Geometry Needed: Wheel diameter at rolling surface
+Can be checked automatically: YES
+Automatic Checking Method: Diameter measurement across contact width
+Required Inputs: Wheel geometry
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show diameter measurement
+Engineering Importance: Performance
+Penalty: 2.5pts per millimeter per wheel (Proportional)
+Notes: If only one wheel per axle is outside dimension, point penalty stands but regulation reclassified as General.
+
+---
+
+ REGULATION: T7.6 - Race Track Contact
+ID: REG-T7.6
+Rule Name: Race Track Contact
+Description: All four wheels must touch racing surface at same time across full track contact width, measured with full power unit cartridge inserted, car on all four wheels with no outside assistance. Track contact must be maintained prior to car launch and during racing.
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: All wheels ground contact verification
+Can be checked automatically: YES
+Automatic Checking Method: Ground contact detection for all wheels
+Required Inputs: Wheel geometry, car mesh (with cartridge), track surface
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wheels not contacting track
+Engineering Importance: Performance
+Penalty: 2.5pts per wheel
+
+---
+
+ REGULATION: T7.7 - Rolling Surface
+ID: REG-T7.7
+Rule Name: Rolling Surface
+Description: Wheel diameter must be consistent across track contact width (no tread-like features permitted).
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wheel surface consistency across contact width
+Can be checked automatically: YES
+Automatic Checking Method: Surface continuity analysis, tread feature detection
+Required Inputs: Wheel geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight inconsistent surface areas
+Engineering Importance: Performance
+Penalty: 2.5pts per wheel
+
+---
+
+ REGULATION: T7.8 - Rotation
+ID: REG-T7.8
+Rule Name: Wheel Rotation
+Description: To facilitate forward motion during racing, all four wheels must rotate freely about their axis using a 3° maximum inclined surface.
+Category: Wheels
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 3°
+Geometry Needed: Free rotation verification
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Rotation analysis
+Required Inputs: Wheel geometry, axle definition
+Expected Output: Pass/Fail
+Visual Highlight: Show rotation check
+Engineering Importance: Performance
+Penalty: 5pts per wheel
+
+---
+
+ REGULATION: T7.9.1 - Visibility in Top View (Front of Front Wheels)
+ID: REG-T7.9.1
+Rule Name: Visibility in Top View - Front of Front Wheels
+Description: Minimum 5.0mm clearance in front of front wheels, from inside edges of each wheel's track contact width to extreme width of car assembly, height from track surface of 65.0mm. Measured parallel to vertical reference plane and track surface.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 5.0mm
+Geometry Needed: Clearance zone in front of front wheels
+Can be checked automatically: YES
+Automatic Checking Method: Top view clearance measurement, obstruction detection
+Required Inputs: Car mesh, wheel geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Highlight clearance zone
+Engineering Importance: Performance
+Penalty: 2.5pts
+
+---
+
+ REGULATION: T7.9.2 - Visibility in Top View (Behind Front Wheels)
+ID: REG-T7.9.2
+Rule Name: Visibility in Top View - Behind Front Wheels
+Description: Minimum clearance behind front wheels as per diagram. Measured parallel to vertical reference plane and track surface.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values: See diagram
+Geometry Needed: Clearance zone behind front wheels
+Can be checked automatically: YES
+Automatic Checking Method: Top view clearance measurement, obstruction detection
+Required Inputs: Car mesh, wheel geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Highlight clearance zone
+Engineering Importance: Performance
+Penalty: 5pts
+
+---
+
+ REGULATION: T7.9.3 - Visibility in Top View (Front of Rear Wheels)
+ID: REG-T7.9.3
+Rule Name: Visibility in Top View - Front of Rear Wheels
+Description: Minimum clearance in front of rear wheels as per diagram. Measured parallel to vertical reference plane and track surface.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values: See diagram
+Geometry Needed: Clearance zone in front of rear wheels
+Can be checked automatically: YES
+Automatic Checking Method: Top view clearance measurement, obstruction detection
+Required Inputs: Car mesh, wheel geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Highlight clearance zone
+Engineering Importance: Performance
+Penalty: 5pts
+
+---
+
+ REGULATION: T7.9.4 - Visibility in Top View (Behind Rear Wheels)
+ID: REG-T7.9.4
+Rule Name: Visibility in Top View - Behind Rear Wheels
+Description: Minimum 5.0mm clearance behind rear wheels, from inside edges of each wheel's track contact width to extreme width of car assembly, height from track surface of 65.0mm. Measured parallel to vertical reference plane and track surface.
+Category: Wheels
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 5.0mm
+Geometry Needed: Clearance zone behind rear wheels
+Can be checked automatically: YES
+Automatic Checking Method: Top view clearance measurement, obstruction detection
+Required Inputs: Car mesh, wheel geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Highlight clearance zone
+Engineering Importance: Performance
+Penalty: 2.5pts
+
+---
+
+ REGULATION: T7.10 - Visibility in Side Views
+ID: REG-T7.10
+Rule Name: Visibility in Side Views
+Description: Visibility of all wheels must not be physically obscured by any component of car with exception of any wheel support systems, in car's side elevation views.
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wheel visibility in side projections
+Can be checked automatically: YES
+Automatic Checking Method: Side projection analysis, obstruction detection (excluding wheel supports)
+Required Inputs: Car mesh, wheel geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight obstruction areas
+Engineering Importance: Performance
+Penalty: 10pts per wheel
+
+---
+
+ REGULATION: T7.11 - Visibility in Front View
+ID: REG-T7.11
+Rule Name: Visibility in Front View
+Description: Visibility of front wheels in front view may only be physically obstructed to a height of 20.0mm from track surface. Measured with full 8g cartridge inserted, car on all four wheels with no outside assistance.
+Category: Wheels
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 20.0mm
+Geometry Needed: Front wheel obstruction height
+Can be checked automatically: YES
+Automatic Checking Method: Front view obstruction height measurement
+Required Inputs: Car mesh (with cartridge), wheel geometry, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show obstruction height
+Engineering Importance: Performance
+Penalty: 10pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T7.12.1 - Wheel Support Systems Containment
+ID: REG-T7.12.1
+Rule Name: Wheel Support Systems Containment
+Description: Wheel support systems may only exist within cylindrical volume generated through diameter of two opposing wheels.
+Category: Wheels
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wheel support containment within wheel diameter extrusion
+Can be checked automatically: YES
+Automatic Checking Method: Containment check within theoretical cylinder
+Required Inputs: Wheel support mesh, wheel geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wheel supports outside containment
+Engineering Importance: General
+Penalty: 5pts each
+
+---
+
+ REGULATION: T7.12.2 - Wheel Support Systems Identification
+ID: REG-T7.12.2
+Rule Name: Wheel Support Systems Identification
+Description: Surfaces defining wheel support structures must be dimensioned and identified clearly by hatching, shading or block color within engineering drawings.
+Category: Documentation
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Drawing annotations
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Drawing analysis for annotations
+Required Inputs: Engineering drawings
+Expected Output: Pass/Fail
+Visual Highlight: Highlight missing annotations
+Engineering Importance: General
+Penalty: 5pts each
+
+---
+
+ REGULATION: T7.13 - Wheel Safety Test
+ID: REG-T7.13
+Rule Name: Wheel Safety Test
+Description: To prevent wheel detachment during racing, wheel safety test carried out. Wheels must be robust to prevent diameter or shape changing during racing. 100g weight suspended from each wheel. Minimum clearance required from inner corner of wheel to car body.
+Category: Safety
+Requirement Type: Boolean
+Numerical Values:
+- Test weight: 100g
+Geometry Needed: Wheel attachment robustness, clearance
+Can be checked automatically: NO
+Automatic Checking Method: Physical test only
+Required Inputs: N/A
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Critical
+Penalty: 2.5pts per wheel
+
+---
+
+ PART 8: NOSE, FRONT WING, END PLATES AND WING SUPPORT STRUCTURES (ARTICLE T8)
+
+---
+
+ REGULATION: T8.1 - Front Wing Component Identification
+ID: REG-T8.1
+Rule Name: Front Wing Component Identification
+Description: Surfaces defining nose, front wing(s), end plates and wing support structures must be dimensioned and identified clearly by hatching, shading or block color within engineering drawings.
+Category: Documentation
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Drawing annotations
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Drawing analysis for annotations
+Required Inputs: Engineering drawings
+Expected Output: Pass/Fail
+Visual Highlight: Highlight missing annotations
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T8.2 - Nose Cone Assembly Dimension
+ID: REG-T8.2
+Rule Name: Nose Cone Assembly Dimension
+Description: Measured in front of and parallel to reference plane A to extreme front of fully assembled car. Nose cone overhang maximum 40mm.
+Category: Body
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 40.0mm
+Geometry Needed: Nose cone length from reference plane A
+Can be checked automatically: YES
+Automatic Checking Method: Length measurement from reference plane A to nose tip
+Required Inputs: Car mesh, reference plane A
+Expected Output: Pass/Fail
+Visual Highlight: Show nose overhang measurement
+Engineering Importance: General
+Penalty: 5pts each
+
+---
+
+ REGULATION: T8.3 - Front Wing Description and Placement
+ID: REG-T8.3
+Rule Name: Front Wing Description and Placement
+Description: Car design should resemble actual F1 car through inclusion of wing(s) on nose. Each wing section must have a leading edge and a trailing edge across its full span.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wing feature identification
+Can be checked automatically: YES
+Automatic Checking Method: Leading/trailing edge detection
+Required Inputs: Front wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wings
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T8.4 - Front Wing Construction and Rigidity
+ID: REG-T8.4
+Rule Name: Front Wing Construction and Rigidity
+Description: Nose, front wing(s) and any support structures may be manufactured from any separate materials. Wing span dimension must remain unchanged during races (wings must be rigid).
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wing rigidity verification
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Structural analysis
+Required Inputs: Front wing geometry, material properties
+Expected Output: Pass/Fail
+Visual Highlight: Highlight flexible areas
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T8.5.1 - Nose and Wing Support Structure Location
+ID: REG-T8.5.1
+Rule Name: Nose and Wing Support Structure Location
+Description: Nose and front wing support structure must be in front of reference plane A, no more than 25.0mm above track surface, and no wider than 15mm either side of center line reference plane.
+Category: Wing
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max height: 25.0mm
+- Maximum width from centerline: 15.0mm each side
+Geometry Needed: Support structure height and width relative to centerline
+Can be checked automatically: YES
+Automatic Checking Method: Height measurement from track surface, width measurement from centerline
+Required Inputs: Support structure geometry, reference plane A, track surface, centerline
+Expected Output: Pass/Fail
+Visual Highlight: Show height and width measurements
+Engineering Importance: General
+Penalty: 10pts
+
+---
+
+ REGULATION: T8.5.2 - Front Wing and End Plate Location
+ID: REG-T8.5.2
+Rule Name: Front Wing and End Plate Location
+Description: Front wing and front wing end plates must be in front of reference plane A. Front wing must be no more than 20.0mm above track surface when wider than 15mm either side of center line.
+Category: Wing
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max height: 20.0mm
+Geometry Needed: Front wing height when outside centerline limits
+Can be checked automatically: YES
+Automatic Checking Method: Height measurement from track surface for wing sections outside centerline
+Required Inputs: Front wing geometry, reference plane A, track surface, centerline
+Expected Output: Pass/Fail
+Visual Highlight: Show height measurement
+Engineering Importance: General
+Penalty: 10pts
+
+---
+
+ REGULATION: T8.5.3 - Front Wing End Plate Location
+ID: REG-T8.5.3
+Rule Name: Front Wing End Plate Location
+Description: Front wing endplates must be positioned outside minimum legal span, with maximum width of 10.0mm when measured perpendicular to vertical reference plane, and must not extend more than 25.0mm above track surface when positioned outside front wheels.
+Category: Wing
+Requirement Type: Maximum
+Numerical Values:
+- Max width: 10.0mm
+- Max height: 25.0mm
+Geometry Needed: End plate width and height
+Can be checked automatically: YES
+Automatic Checking Method: Width measurement perpendicular to vertical reference plane, height measurement from track surface
+Required Inputs: End plate geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Show width and height measurements
+Engineering Importance: General
+Penalty: 10pts
+
+---
+
+ REGULATION: T8.6.1 - Front Wing Span
+ID: REG-T8.6.1
+Rule Name: Front Wing Span
+Description: Front wing span measured at right angles to vertical reference plane along leading edge, trailing edge, top surface and bottom surface, whichever is shortest considered as maximum span. Where span is intersected by another part of car, total span is sum of maximum of two wing segments, which must be no less than 25.0mm each.
+Category: Wing
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 50.0mm total (25.0mm x 2 or 50.0mm x 1)
+- Minimum segment length: 25.0mm
+Geometry Needed: Wing span measurement along edges and surfaces
+Can be checked automatically: YES
+Automatic Checking Method: Span measurement along leading/trailing edges, top/bottom surfaces, segment identification
+Required Inputs: Front wing geometry, vertical reference plane
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show span measurement
+Engineering Importance: Performance
+Penalty: 2pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T8.6.2 - Front Wing Chord
+ID: REG-T8.6.2
+Rule Name: Front Wing Chord
+Description: Front wing chord minimum to maximum dimensions must exist throughout existing wing span. Chord is distance between leading edge and trailing edge of up to three elements that must overlap. Measured parallel to vertical reference plane and normal to track surface. Chord compliance does not depend on span.
+Category: Wing
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 15.0mm
+- Absolute Max: 25.0mm
+Geometry Needed: Wing chord measurement
+Can be checked automatically: YES
+Automatic Checking Method: Chord length measurement between leading and trailing edges
+Required Inputs: Front wing geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show chord measurement
+Engineering Importance: Performance
+Penalty: 1pt per millimeter (Proportional)
+Notes: Multi vane wings must overlap.
+
+---
+
+ REGULATION: T8.6.3 - Front Wing Thickness
+ID: REG-T8.6.3
+Rule Name: Front Wing Thickness
+Description: Wing thickness minimum to maximum dimensions must exist throughout wing's existing span and at a point along existing chord. Thickness compliance does not depend on span and/or chord.
+Category: Wing
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 2.0mm
+- Absolute Max: 6.0mm
+Geometry Needed: Wing thickness measurement
+Can be checked automatically: YES
+Automatic Checking Method: Thickness measurement across wing section
+Required Inputs: Front wing geometry
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show thickness measurement
+Engineering Importance: Performance
+Penalty: 1pt per millimeter (Proportional)
+
+---
+
+ REGULATION: T8.7 - Front Wing Clear Airflow
+ID: REG-T8.7
+Rule Name: Front Wing Clear Airflow
+Description: Front wing(s), measured across minimum existing span, must have minimum of 5.0mm of clear 'air' space to any other part of car or track surface, measured normal from any part of wing's surface. Checked with 5.0mm diameter spherical ball on end of 2mm diameter rod.
+Category: Wing
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 5.0mm
+Geometry Needed: Clearance from wing surface to any other component
+Can be checked automatically: YES
+Automatic Checking Method: Clearance measurement using sphere collision detection
+Required Inputs: Front wing geometry, car mesh, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Show minimum clearance point
+Engineering Importance: Performance
+Penalty: 5pts
+
+---
+
+ REGULATION: T8.8 - Front Wing Visibility
+ID: REG-T8.8
+Rule Name: Front Wing Visibility
+Description: Visibility of front wing(s) must not be physically obstructed by any other component when viewed in front view.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Front wing visibility in front projection
+Can be checked automatically: YES
+Automatic Checking Method: Front projection analysis, obstruction detection
+Required Inputs: Car mesh, front wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight obstruction areas
+Engineering Importance: Performance
+Penalty: 10pts
+
+---
+
+ PART 9: REAR WING AND WING SUPPORT STRUCTURES (ARTICLE T9)
+
+---
+
+ REGULATION: T9.1 - Rear Wing Component Identification
+ID: REG-T9.1
+Rule Name: Rear Wing Component Identification
+Description: Surfaces defining rear wing and wing support structure(s) must be dimensioned and identified clearly by hatching, shading or block color within engineering drawings.
+Category: Documentation
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Drawing annotations
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Drawing analysis for annotations
+Required Inputs: Engineering drawings
+Expected Output: Pass/Fail
+Visual Highlight: Highlight missing annotations
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T9.2 - Rear Wing Description and Placement
+ID: REG-T9.2
+Rule Name: Rear Wing Description and Placement
+Description: Car design should resemble actual F1 car through inclusion of wing at rear. To be considered a wing section it must have a leading edge and a trailing edge across its required span.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wing feature identification
+Can be checked automatically: YES
+Automatic Checking Method: Leading/trailing edge detection
+Required Inputs: Rear wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight wings
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T9.3 - Rear Wing Construction and Rigidity
+ID: REG-T9.3
+Rule Name: Rear Wing Construction and Rigidity
+Description: Rear wing and any support structures may be manufactured from any separate materials. Wing span dimension must remain unchanged during races (wings must be rigid).
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Wing rigidity verification
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Structural analysis
+Required Inputs: Rear wing geometry, material properties
+Expected Output: Pass/Fail
+Visual Highlight: Highlight flexible areas
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T9.4.1 - Rear Wing and Support Structure Location
+ID: REG-T9.4.1
+Rule Name: Rear Wing and Support Structure Location
+Description: Whole of rear wing and any support structure must be to the rear of reference plane B.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Position relative to reference plane B
+Can be checked automatically: YES
+Automatic Checking Method: Position verification relative to reference plane B
+Required Inputs: Rear wing geometry, support structure, reference plane B
+Expected Output: Pass/Fail
+Visual Highlight: Show reference plane B
+Engineering Importance: General
+Penalty: 10pts
+
+---
+
+ REGULATION: T9.4.2 - Rear Overhang Length
+ID: REG-T9.4.2
+Rule Name: Rear Overhang Length
+Description: Measured to rear of and parallel to reference plane B to extreme rear of fully assembled car. Rear wing and wing support structure overhang maximum 40.0mm.
+Category: Overall Dimensions
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 40.0mm
+Geometry Needed: Length from reference plane B to rear of car
+Can be checked automatically: YES
+Automatic Checking Method: Length measurement from reference plane B
+Required Inputs: Car mesh, reference plane B
+Expected Output: Pass/Fail
+Visual Highlight: Show rear overhang measurement
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T9.4.3 - Rear Overhang Height
+ID: REG-T9.4.3
+Rule Name: Rear Overhang Height
+Description: Measured to rear of reference plane B to highest point of fully assembled car from track surface.
+Category: Overall Dimensions
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max: 65.0mm
+Geometry Needed: Height of rear overhang
+Can be checked automatically: YES
+Automatic Checking Method: Height measurement from track surface
+Required Inputs: Car mesh, reference plane B, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Show height measurement
+Engineering Importance: General
+Penalty: 5pts
+
+---
+
+ REGULATION: T9.5.1 - Rear Wing Span
+ID: REG-T9.5.1
+Rule Name: Rear Wing Span
+Description: Rear wing span measured at right angles to vertical reference plane along leading edge, trailing edge, top surface or bottom surface, whichever is shortest considered as maximum span. Rear wing must exist as single, unbroken minimum span of 50.0mm.
+Category: Wing
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 50.0mm
+Geometry Needed: Wing span measurement along edges and surfaces
+Can be checked automatically: YES
+Automatic Checking Method: Span measurement along leading/trailing edges, top/bottom surfaces
+Required Inputs: Rear wing geometry, vertical reference plane
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show span measurement
+Engineering Importance: Performance
+Penalty: 2pts per millimeter (Proportional)
+
+---
+
+ REGULATION: T9.5.2 - Rear Wing Chord
+ID: REG-T9.5.2
+Rule Name: Rear Wing Chord
+Description: Rear wing chord minimum to maximum dimensions must exist throughout existing wing span. Chord is distance between leading edge and trailing edge of up to two elements that must overlap. Measured parallel to vertical reference plane and normal to track surface. Chord compliance does not depend on span.
+Category: Wing
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 15.0mm
+- Absolute Max: 25.0mm
+Geometry Needed: Wing chord measurement
+Can be checked automatically: YES
+Automatic Checking Method: Chord length measurement between leading and trailing edges
+Required Inputs: Rear wing geometry, vertical reference plane, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show chord measurement
+Engineering Importance: Performance
+Penalty: 1pt per millimeter (Proportional)
+Notes: Multi vane wings must overlap.
+
+---
+
+ REGULATION: T9.5.3 - Rear Wing Thickness
+ID: REG-T9.5.3
+Rule Name: Rear Wing Thickness
+Description: Wing thickness minimum to maximum dimensions must exist throughout wing's existing span and at a point along existing chord. Thickness compliance does not depend on span and/or chord.
+Category: Wing
+Requirement Type: Range
+Numerical Values:
+- Absolute Min: 2.0mm
+- Absolute Max: 6.0mm
+Geometry Needed: Wing thickness measurement
+Can be checked automatically: YES
+Automatic Checking Method: Thickness measurement across wing section
+Required Inputs: Rear wing geometry
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show thickness measurement
+Engineering Importance: Performance
+Penalty: 1pt per millimeter (Proportional)
+
+---
+
+ REGULATION: T9.5.4 - Rear Wing Height Deviation
+ID: REG-T9.5.4
+Rule Name: Rear Wing Height Deviation
+Description: Maximum change in height deviation from highest point of wing is 15mm. Measured along minimum span on top surface.
+Category: Wing
+Requirement Type: Maximum
+Numerical Values:
+- Absolute Max height deviation: 15.0mm
+Geometry Needed: Wing height variation
+Can be checked automatically: YES
+Automatic Checking Method: Height variation measurement along wing span
+Required Inputs: Rear wing geometry, track surface
+Expected Output: Pass/Fail (with proportional penalty)
+Visual Highlight: Show height deviation
+Engineering Importance: General
+Penalty: 1pt per millimeter (Proportional)
+
+---
+
+ REGULATION: T9.6 - Rear Wing Clear Airflow
+ID: REG-T9.6
+Rule Name: Rear Wing Clear Airflow
+Description: Rear wing, measured across existing span, must have minimum of 5.0mm of clear 'air' space to any other part of car or track surface, measured normal from any part of wing's surface. Checked with 5.0mm diameter spherical ball on end of 2mm diameter rod.
+Category: Wing
+Requirement Type: Minimum
+Numerical Values:
+- Absolute Min: 5.0mm
+Geometry Needed: Clearance from wing surface to any other component
+Can be checked automatically: YES
+Automatic Checking Method: Clearance measurement using sphere collision detection
+Required Inputs: Rear wing geometry, car mesh, track surface
+Expected Output: Pass/Fail
+Visual Highlight: Show minimum clearance point
+Engineering Importance: Performance
+Penalty: 5pts
+
+---
+
+ REGULATION: T9.7 - Rear Wing Visibility
+ID: REG-T9.7
+Rule Name: Rear Wing Visibility
+Description: Visibility of rear wing must not be physically obstructed by any other component when viewed in front view.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Rear wing visibility in front projection
+Can be checked automatically: YES
+Automatic Checking Method: Front projection analysis, obstruction detection
+Required Inputs: Car mesh, rear wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight obstruction areas
+Engineering Importance: Performance
+Penalty: 10pts
+
+---
+
+ PART 10: ADDITIONAL COMPONENTS (ARTICLE T10)
+
+---
+
+ REGULATION: T10.1 - Additional Components Description and Placement
+ID: REG-T10.1
+Rule Name: Additional Components Description and Placement
+Description: Only power unit cartridge, as positioned by race officials, is permitted to make contact with launch pods and/or cars prior to and/or during racing.
+Category: General
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Component contact detection
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Contact analysis
+Required Inputs: Car mesh, launch pod geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight non-cartridge contact
+Engineering Importance: General
+Penalty: N/A
+
+---
+
+ PART 11: APPENDIX INFORMATION
+
+---
+
+ APPENDIX I: START BOX AND FINISH GATE
+ID: APP-I
+Name: Start Box and Finish Gate Information
+Description: Start boxes designed to sit centrally within each lane. Distance from emitter center line to race track surface on both lanes is approximately 7mm.
+Category: Track
+Requirement Type: Informational
+Numerical Values:
+- Distance from emitter centerline to track: ~7mm
+Geometry Needed: Start box and finish gate geometry
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: Medium
+Notes: Endplates may play role in breaking beam that detects cars crossing finish line. Should be designed to ensure reliable beam triggering.
+
+---
+
+ APPENDIX II: OFFICIAL STEM RACING™ MODEL BLOCK DIMENSIONS
+ID: APP-II
+Name: Official STEM Racing™ Model Block Dimensions
+Description: Rigid, closed cell foam block processed to dimensional features as shown in orthographic projection. All dimensions shown in millimeters. Component available for download.
+Category: Materials
+Requirement Type: Exact
+Numerical Values: See orthographic projection in appendix
+Geometry Needed: Block dimensional verification
+Can be checked automatically: YES
+Automatic Checking Method: Compare car body geometry to block dimensions
+Required Inputs: Car body mesh, block dimensions
+Expected Output: Pass/Fail
+Visual Highlight: Show block outline
+Engineering Importance: Critical
+
+---
+
+ APPENDIX III: FRONT WING COMPLIANCE EXAMPLES
+ID: APP-III
+Name: Front Wing Compliance Examples
+Description: Table showing penalty points awarded for front wing span, chord or thickness dimensions not meeting specifications. Not exhaustive list.
+Category: Wing
+Requirement Type: Conditional
+Numerical Values: Various
+Geometry Needed: Wing dimension verification
+Can be checked automatically: YES
+Automatic Checking Method: Wing dimension measurement and compliance check
+Required Inputs: Front wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show non-compliant dimensions
+Engineering Importance: Performance
+
+Front Wing Examples - Single Vane:
+| Configuration | Span | Chord | Thickness | Remarks |
+|---|---|---|---|---|
+| Wing span split by central support | PASS | PASS | PASS | Wing span segments minimum length, chord minimum, thickness minimum |
+| Wing span split by nose (trailing edge less than min) | FAIL | PASS | PASS | Wing span segments less than minimum length at trailing edge |
+| Wing span split by nose | PASS | PASS | FAIL | Wing span segments minimum, chord minimum, thickness less than minimum |
+
+Front Wing Examples - Multiple Vanes:
+| Configuration | Span | Chord | Thickness | Remarks |
+|---|---|---|---|---|
+| Split by central support | PASS (25+25mm) | FAIL (no overlap) | PASS | Multi vane wings do not overlap |
+| Split by central support | FAIL | PASS | PASS | Wing span segments less than minimum at trailing edge |
+
+---
+
+ APPENDIX IV: REAR WING COMPLIANCE EXAMPLES
+ID: APP-IV
+Name: Rear Wing Compliance Examples
+Description: Table showing penalty points awarded for rear wing span, chord, thickness, and deviation dimensions not meeting specifications. Not exhaustive list.
+Category: Wing
+Requirement Type: Conditional
+Numerical Values: Various
+Geometry Needed: Wing dimension verification
+Can be checked automatically: YES
+Automatic Checking Method: Wing dimension measurement and compliance check
+Required Inputs: Rear wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show non-compliant dimensions
+Engineering Importance: Performance
+
+Rear Wing Examples - Single Vane:
+| Span | Chord | Thickness | Deviation | Remarks |
+|---|---|---|---|---|
+| PASS | PASS | PASS | PASS | All dimensions compliant |
+| PASS | PASS | FAIL | PASS | Thickness more than maximum |
+| PASS | FAIL | PASS | FAIL | Chord less than minimum, deviation exceeds maximum |
+
+Rear Wing Examples - Multiple Vane:
+| Span | Chord | Thickness | Deviation | Remarks |
+|---|---|---|---|---|
+| PASS | PASS | PASS | PASS | All dimensions compliant |
+| PASS | FAIL (no overlap) | PASS | PASS | Multi vane wings do not overlap |
+| PASS | FAIL | PASS | FAIL | Chord less than minimum, deviation exceeds maximum |
+
+---
+
+ APPENDIX V: WING OVERLAP
+ID: APP-V
+Name: Wing Overlap Explanation
+Description: Method to check if gap exists between wing elements.
+Category: Wing
+Requirement Type: Boolean
+Numerical Values: None
+Geometry Needed: Gap detection between wing elements
+Can be checked automatically: YES
+Automatic Checking Method: Gap measurement between wing elements
+Required Inputs: Wing geometry
+Expected Output: Pass/Fail
+Visual Highlight: Highlight gaps
+Engineering Importance: Performance
+Notes: Multi vane wings must overlap.
+
+---
+
+ APPENDIX VI: OFFICIAL DENFORD RACE POWER PACK DIMENSIONS
+ID: APP-VI
+Name: Official Denford Race Power Pack Dimensions
+Description: Metallic cartridge containing 8-gram charge of compressed air. Component available for download.
+Category: CO₂ System
+Requirement Type: Range
+Numerical Values:
+- Weight range: 28.9g to 29.4g
+Geometry Needed: Cartridge dimensional verification
+Can be checked automatically: YES
+Automatic Checking Method: Compare to standard cartridge geometry
+Required Inputs: Cartridge geometry, weight data
+Expected Output: Pass/Fail
+Visual Highlight: Show cartridge dimensions
+Engineering Importance: Critical
+
+---
+
+ APPENDIX VII: CAR DECELERATION SYSTEM
+ID: APP-VII
+Name: Car Deceleration System
+Description: Deceleration System acts to bring cars to rest once crossing finish line. STEM Racing™ India will provide Deceleration System integrated into final track section after finish line.
+Category: Safety
+Requirement Type: Informational
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: N/A
+Automatic Checking Method: N/A
+Required Inputs: N/A
+Expected Output: N/A
+Visual Highlight: N/A
+Engineering Importance: Medium
+Notes: Official STEM Racing™ India deceleration system will be only permitted stopping system.
+
+---
+
+ APPENDIX VIII: EXAMPLE OF COMPONENT IDENTIFICATION
+ID: APP-VIII
+Name: Example of Component Identification
+Description: Basic example of component identification. Ensure regulation numbers align with Technical Regulations. Refer to T1.15 for detailed guidance.
+Category: Documentation
+Requirement Type: Informational
+Numerical Values: None
+Geometry Needed: N/A
+Can be checked automatically: PARTIALLY
+Automatic Checking Method: Drawing analysis
+Required Inputs: Engineering drawings
+Expected Output: Pass/Fail
+Visual Highlight: N/A
+Engineering Importance: Medium
+
+---
+
+ APPENDIX IX: HALO AND BALLAST CONTAINER DRAWINGS
+ID: APP-IX
+Name: Halo and Ballast Container Drawings
+Description: Halo requires pocket cut using 6.35mm (1/4") ball nose tool to depth of 3.175mm. Center of Halo Circular notch exactly 10.0mm above bottom of pocket. Center of Circular notch must be 34.0mm ±1.0mm above track surface. Bottom of pocket must be 24.0mm above track in assembled car.
+Category: Safety
+Requirement Type: Exact/Range
+Numerical Values:
+- Pocket tool diameter: 6.35mm (1/4")
+- Pocket depth: 3.175mm
+- Notch center to pocket bottom: 10.0mm
+- Notch center to track: 34.0mm ±1.0mm
+- Pocket bottom to track: 24.0mm
+Geometry Needed: Halo pocket geometry, notch position
+Can be checked automatically: YES
+Automatic Checking Method: Pocket geometry verification, position measurement
+Required Inputs: Car body mesh, halo pocket geometry
+Expected Output: Pass/Fail
+Visual Highlight: Show pocket and notch dimensions
+Engineering Importance: Critical
+Notes: Legal ballast added to container under halo, accessible through halo/helmet aperture. Virtual Cargo can coincide with legal ballast container but not halo pocket. Helmet should not be glued in place to allow ballast adjustments before scrutineering.
+
+---
+
+ PART 12: MASTER LIST OF MEASURABLE PROPERTIES
+
+ Overall Dimensions:
+1. Total Width: 65.0-85.0mm (T3.4)
+2. Total Height: ≤65.0mm (T3.5)
+3. Total Weight: ≥50.0g (T3.6)
+4. Track Clearance: ≥1.5mm (T3.7)
+5. Wheelbase: 120.0-140.0mm (T7.3)
+6. Nose Overhang: ≤40.0mm (T8.2)
+7. Rear Overhang Length: ≤40.0mm (T9.4.2)
+8. Rear Overhang Height: ≤65.0mm (T9.4.3)
+
+ Body:
+9. Main Body Maximum Length: ≤205.0mm (T2.7.1)
+10. Main Body Minimum Thickness: ≥3.5mm (T2.7.1, T5.5)
+11. Virtual Cargo Dimensions: ≥10mm L × ≥10mm W × ≥5mm H (T4.2)
+12. Virtual Cargo Position: Between front and rear wheel centerlines, symmetrical about vertical reference plane (T4.2)
+13. Decal Thickness: ≤0.5mm (T4.8)
+14. Team Number Text Height: ≥8.0mm (T4.7)
+
+ Power Unit Cartridge Chamber:
+15. Chamber Diameter: 18.0-18.5mm (T5.1)
+16. Cartridge Rear Center to Track: 30.0-40.0mm (T5.2)
+17. Chamber Depth: 45.0-58.0mm (T5.3)
+18. Chamber Angle: -3° to +3° (T5.4)
+19. Chamber Safety Zone Thickness: ≥3.5mm (T5.5)
+20. Cartridge Protrusion: ≥5.0mm (T5.6)
+
+ Tether Line Guides:
+21. Front Guide Position: On or ≤10.0mm in front of front axle (T6.1)
+22. Rear Guide Position: On or ≤10.0mm behind rear axle (T6.1)
+23. Guide Opening: 3.5-6.0mm (T6.2)
+
+ Wheels:
+24. Front Track Contact Width: ≥13.0mm (T7.4.1)
+25. Rear Track Contact Width: ≥17.0mm (T7.4.2)
+26. Wheel Diameter: 28.0-32.0mm (T7.5)
+27. Front Track Distance (inner): ≥38.0mm (T7.2.1)
+28. Rear Track Distance (inner): ≥30.0mm (T7.2.2)
+29. Front Wheel Obstruction Height: ≤20.0mm (T7.11)
+
+ Front Wing:
+30. Nose Support Height: ≤25.0mm (T8.5.1)
+31. Nose Support Width from Centerline: ≤15.0mm each side (T8.5.1)
+32. Front Wing Height (outside 15mm centerline): ≤20.0mm (T8.5.2)
+33. End Plate Width: ≤10.0mm (T8.5.3)
+34. End Plate Height: ≤25.0mm (T8.5.3)
+35. Front Wing Span: ≥50.0mm total (minimum segment 25.0mm) (T8.6.1)
+36. Front Wing Chord: 15.0-25.0mm (T8.6.2)
+37. Front Wing Thickness: 2.0-6.0mm (T8.6.3)
+38. Front Wing Clear Airflow: ≥5.0mm (T8.7)
+
+ Rear Wing:
+39. Rear Wing Span: ≥50.0mm (T9.5.1)
+40. Rear Wing Chord: 15.0-25.0mm (T9.5.2)
+41. Rear Wing Thickness: 2.0-6.0mm (T9.5.3)
+42. Rear Wing Height Deviation: ≤15.0mm (T9.5.4)
+43. Rear Wing Clear Airflow: ≥5.0mm (T9.6)
+
+ Halo:
+44. Halo Circular Notch Center Height: 34.0mm ±1.0mm (T4.4.4)
+45. Halo Pocket Bottom Height: 24.0mm (T4.4.4)
+46. Halo Pocket Depth: 3.175mm (Appendix IX)
+47. Halo Pocket Tool Diameter: 6.35mm (1/4") ball nose (Appendix IX)
+48. Notch Center to Pocket Bottom: 10.0mm (Appendix IX)
+
+ Power Unit Cartridge:
+49. Cartridge Weight: 28.9-29.4g (Appendix VI)
+
+---
+
+ PART 13: AUTOMATION FEASIBILITY ANALYSIS
+
+ Fully Automatable Rules (3D Model Only):
+1. T3.3 - Defined Features (component list check)
+2. T3.4 - Total Width (bounding box width)
+3. T3.5 - Total Height (height from track surface)
+4. T3.7 - Track Clearance (minimum clearance)
+5. T4.1 - Body Construction (material continuity)
+6. T4.2 - Virtual Cargo (volume, position, symmetry)
+7. T4.4.1 - Halo Inclusion (geometry comparison)
+8. T4.4.2 - Halo Visibility Front/Side (ray casting)
+9. T4.4.3 - Halo Visibility Top (projection analysis)
+10. T4.4.4 - Halo Circular Notch Height (position measurement)
+11. T4.5 - Helmet (geometry comparison)
+12. T4.6 - Logo Decal Location (decal detection)
+13. T4.7 - Team Number (text detection)
+14. T4.8 - Decal Thickness (layer thickness)
+15. T5.1 - Chamber Diameter (cylindrical measurement)
+16. T5.2 - Cartridge Distance from Track (height measurement)
+17. T5.3 - Chamber Depth (depth measurement)
+18. T5.4 - Chamber Angle (angle measurement)
+19. T5.5 - Chamber Safety Zone (thickness measurement, intersection detection)
+20. T5.6 - Cartridge Visibility (protrusion measurement, radial visibility)
+21. T6.1 - Tether Guide Location (position relative to axles)
+22. T6.2 - Tether Guide Internal Dimension (hole diameter)
+23. T6.3 - Tether Guide Safety (hole closure verification)
+24. T7.1 - Number and Location of Wheels (wheel count, axle alignment)
+25. T7.2.1 - Front Track Distance (distance measurement)
+26. T7.2.2 - Rear Track Distance (distance measurement)
+27. T7.3 - Wheelbase (axle distance)
+28. T7.4.1 - Front Track Contact Width (contact width)
+29. T7.4.2 - Rear Track Contact Width (contact width)
+30. T7.5 - Wheel Diameter (diameter measurement)
+31. T7.6 - Race Track Contact (ground contact verification)
+32. T7.7 - Rolling Surface (surface consistency)
+33. T7.9.1-4 - Top/Bottom Visibility (clearance zones)
+34. T7.10 - Side Visibility (projection analysis)
+35. T7.11 - Front Wheel Visibility (obstruction height)
+36. T7.12.1 - Wheel Support Containment (cylindrical volume check)
+37. T8.2 - Nose Overhang (length measurement)
+38. T8.3 - Front Wing Description (leading/trailing edge)
+39. T8.5.1 - Support Location (height, width)
+40. T8.5.2 - Front Wing Location (height)
+41. T8.5.3 - End Plate Location (width, height)
+42. T8.6.1 - Front Wing Span (span measurement)
+43. T8.6.2 - Front Wing Chord (chord measurement)
+44. T8.6.3 - Front Wing Thickness (thickness measurement)
+45. T8.7 - Front Wing Clear Airflow (clearance)
+46. T8.8 - Front Wing Visibility (projection analysis)
+47. T9.4.1 - Rear Wing Location (position relative to reference plane B)
+48. T9.4.2 - Rear Overhang Length (length measurement)
+49. T9.4.3 - Rear Overhang Height (height measurement)
+50. T9.5.1 - Rear Wing Span (span measurement)
+51. T9.5.2 - Rear Wing Chord (chord measurement)
+52. T9.5.3 - Rear Wing Thickness (thickness measurement)
+53. T9.5.4 - Rear Wing Height Deviation (height variation)
+54. T9.6 - Rear Wing Clear Airflow (clearance)
+55. T9.7 - Rear Wing Visibility (projection analysis)
+
+ Partially Automatable Rules:
+1. T3.1.2 - CNC Manufacturing (requires manufacturing evidence)
+2. T3.1.3 - Holographic Sticker (requires physical verification)
+3. T3.2.1 - Safe Construction (partially automatable, requires safety feature analysis)
+4. T7.8 - Wheel Rotation (requires rotation analysis)
+5. T7.12.2 - Wheel Support Identification (requires drawing analysis)
+6. T8.1 - Front Wing Component Identification (requires drawing analysis)
+7. T8.4 - Front Wing Construction/Rigidity (requires structural analysis)
+9. T9.1 - Rear Wing Component Identification (requires drawing analysis)
+10. T9.3 - Rear Wing Construction/Rigidity (requires structural analysis)
+11. T10.1 - Additional Components (requires contact analysis)
+12. T2.10 - Originality of Work (requires originality detection)
+13. T4.3 - Virtual Cargo Identification (requires drawing analysis)
+14. T3.1.4 - Identical Components (requires geometry comparison)
+
+ Rules Requiring Manual Inspection:
+1. T3.2.2 - Safety During Racing (during racing inspection)
+2. T3.6 - Total Weight (requires physical weighing)
+3. T3.8 - Status During Racing (during racing inspection)
+4. T3.9 - Replacement Components (requires physical verification)
+5. T3.9.1 - Submitted Components (requires physical verification)
+6. T3.9.2 - Introduced Components (requires component tracking)
+7. T4.4.5 - Halo Safety Test (physical test only)
+8. T7.13 - Wheel Safety Test (physical test only)
+9. T1.13 - Hand Finishing (surface quality assessment)
+
+---
+
+ PART 14: SUGGESTED SOFTWARE ARCHITECTURE
+
+ Browser-Based Geometry Engine Architecture
+
+ 1. Core Geometry Engine
+Components:
+- Three.js/Mesh Processing: 3D model loading, manipulation, and visualization
+- CSG (Constructive Solid Geometry): Boolean operations for volume analysis
+- CAD Kernel Integration: For precise geometric calculations
+
+Functions:
+- Mesh loading and parsing (STL, OBJ, STEP formats)
+- Coordinate system establishment (track surface, reference planes)
+- Bounding box calculations
+- Distance measurements between points, surfaces, and edges
+- Angle measurements
+- Volume calculations
+- Surface area calculations
+- Minimum thickness analysis
+- Ray casting for visibility checks
+
+ 2. Rule Processing Module
+Functions:
+- Rule database management
+- Rule classification (GENERAL, SAFETY, PERFORMANCE)
+- Sequential rule processing
+- Dependency management (some rules depend on others)
+- Error handling and reporting
+
+ 3. Measurement Extractor
+Functions:
+- Extract all required measurements from 3D model
+- Generate measurement values for each property
+- Validate measurement precision
+- Store measurement results
+
+ 4. Compliance Checker
+Functions:
+- Compare measurements against regulation limits
+- Apply absolute and proportional penalties
+- Generate compliance report
+- Highlight violations
+
+ 5. Visualization Engine
+Functions:
+- 3D model rendering with measurement overlays
+- Color-coding for compliance status:
+  - Green: Compliant
+  - Yellow: Warning/Close to limit
+  - Red: Non-compliant
+- Measurement arrows and annotations
+- Reference plane visualization
+- Highlighting of specific regions (virtual cargo, safety zones)
+
+ 6. Report Generator
+Functions:
+- Generate detailed compliance report
+- List all measurements with values and limits
+- Show penalty calculations
+- Provide visual evidence of violations
+- Export HTML/PDF reports
+
+ 7. User Interface
+Functions:
+- Upload 3D model
+- Select car to analyze
+- View 3D model with annotations
+- Navigate through violations
+- View detailed measurements
+- Export reports
+
+ 8. API Layer
+Functions:
+- REST API for external integration
+- Model upload endpoints
+- Rule processing endpoints
+- Report generation endpoints
+
+ 9. Data Storage
+Functions:
+- Store car models
+- Store measurement results
+- Store compliance history
+- Store rule definitions
+
+ 10. Integration Points
+Functions:
+- CAD software export (Fusion 360, SolidWorks)
+- Engineering drawing analysis (PDF, CAD formats)
+- Weight scale integration (API)
+- Competition management system integration
+
+ Implementation Considerations
+
+ Measurement Accuracy
+- Use double-precision floating point calculations
+- Implement tolerance handling for edge cases
+- Support for measurement units (mm, g, °)
+
+ Performance Optimization
+- LOD (Level of Detail) for complex meshes
+- Parallel processing for independent measurements
+- Caching of measurement results
+
+ Security
+- Secure model upload and storage
+- Access control for competition officials
+- Audit trail for compliance checks
+
+ Browser Compatibility
+- WebGL support for 3D rendering
+- Progressive Web App (PWA) capabilities
+- Mobile-friendly interface
+
+ Extensibility
+- Plugin architecture for custom rules
+- API for adding new measurement types
+- Rule versioning and updates
+
+ Testing
+- Automated test suite for all rules
+- Test models representing edge cases
+- Regression testing for rule updates
+
+ Example Workflow
+1. Model Upload: User uploads car model (STL/OBJ)
+2. Model Processing: System loads and validates model
+3. Reference Establishment: System identifies reference planes and track surface
+4. Measurement Extraction: System extracts all required measurements
+5. Compliance Checking: System checks each rule against measurements
+6. Penalty Calculation: System calculates penalties for violations
+7. Report Generation: System generates detailed compliance report
+8. Visualization: System displays model with violations highlighted
