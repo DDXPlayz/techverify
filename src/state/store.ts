@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import type { LoadedModel } from '../types/vehicle'
 import type { ComplianceReport } from '../types/rules'
 import type { AnalysisStage } from '../engine/pipeline/analyze'
+import { archiveReport } from '../engine/archive'
 
 export type AppPhase = 'landing' | 'analyzing' | 'report'
 
@@ -41,7 +42,11 @@ export const useStore = create<AppState>((set) => ({
   setPhase: (phase) => set({ phase }),
   setProgress: (progressStage, progressDetail) => set({ progressStage, progressDetail }),
   setError: (error) => set(error ? { error, phase: 'landing' } : { error: null }),
-  setModel: (model, report) => set({ model, report, phase: 'report', selectedRuleId: null }),
+  setModel: (model, report) => {
+    set({ model, report, phase: 'report', selectedRuleId: null })
+    // Internal archival only — best-effort, never blocks or affects the user.
+    archiveReport(report, model.fileName)
+  },
   selectRule: (selectedRuleId) => set({ selectedRuleId }),
   setStatusFilter: (statusFilter) => set({ statusFilter }),
   reset: () =>
