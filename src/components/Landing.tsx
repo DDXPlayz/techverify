@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CinematicScene, CHAPTER_COUNT } from '../viewport/CinematicScene'
 import { UploadZone } from './UploadZone'
-import { Navbar } from '@anantam/ui'
+import { Navbar } from '../shared'
 import './landing.css'
 
 const EASE = [0.22, 1, 0.36, 1] as const
